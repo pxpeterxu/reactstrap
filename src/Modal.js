@@ -142,6 +142,8 @@ class Modal extends React.Component {
       this.setState({ isOpen: true});
       // let render() renders Modal Dialog first
       return;
+    } else if (!this.props.isOpen && prevProps.isOpen) {
+      this.close();
     }
 
     // now Modal Dialog is rendered and we can refer this._element and this._dialog
@@ -214,7 +216,6 @@ class Modal extends React.Component {
     if (unmountOnClose) {
       this.destroy();
     }
-    this.close();
 
     if (this._isMounted) {
       this.setState({ isOpen: false });
